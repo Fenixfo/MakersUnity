@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Jair Duván Ayala Duarte
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class ShotController : MonoBehaviour
     public GameObject bulletPrototype;
     Player ctr;
 
-    
+    // Trigger to know when the player enters the shooting area
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name.Equals("Hero") && disparandoA == null)
@@ -17,7 +18,7 @@ public class ShotController : MonoBehaviour
             DecidaDisparar(collision);
         }
     }
-
+    // Trigger to know when the player leaves the shooting area
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision==disparandoA)
@@ -25,7 +26,7 @@ public class ShotController : MonoBehaviour
             disparandoA = null;
         }
     }
-
+    // Shoot probability, default starts at 1 or 100%.
     void DecidaDisparar(Collider2D collision)
     {
         if (Random.value < probabilidadDisparo)
@@ -34,7 +35,7 @@ public class ShotController : MonoBehaviour
             disparandoA = collision;
         }
     }
-
+    // method of shooting
     void Disparar()
     {
         GameObject bulletCopy = Instantiate(bulletPrototype);

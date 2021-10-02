@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Jair Duván Ayala Duarte
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class GunController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // enemy firing
         Destroy(gameObject, lifeTime);
         rgb = GetComponent<Rigidbody2D>();
         stepVector = speed * direction.normalized;
@@ -25,25 +27,11 @@ public class GunController : MonoBehaviour
     void Update()
     {
         rgb.velocity = stepVector;
-       /* if (Input.GetKeyDown("b"))
-        {
-            //if (Player.player.energy)
-            //{
-                Instantiate(Mace, gameObject.GetComponent<Transform>().position, new Quaternion());
-            //}
-            //MaceController.maceController.Shoot(100f);
-            //MaceController.maceController.Shoot(100f);
-            //MaceController.Shoot(100f);
-        }*/
-
     }
-
+    // Destroy gun
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if (collision.transform.name == "Hero")
-        //{
-            Destroy(gameObject);
-        //}
+        Destroy(gameObject);
     }
 
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Jair Duván Ayala Duarte
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,27 +15,20 @@ public class RestartController : MonoBehaviour
     void Start()
     {
         restartController = this;
-        //
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
+    // Trigger to restart the game
     private void OnTriggerEnter2D(Collider2D collision)
     {
         ResetGame();
     }
-
+    // Method to restart the game
     public void ResetGame()
     {
         StartCoroutine(LoadScene());
     }
 
-
+    // Load Scene
     IEnumerator LoadScene()
     {
         animScene.SetTrigger("end");

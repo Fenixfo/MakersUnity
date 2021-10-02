@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Jair Duván Ayala Duarte
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +25,7 @@ public class Finish : MonoBehaviour
     }
 
     bool onChest = false;
+    // verify collision with the hero
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -39,13 +41,15 @@ public class Finish : MonoBehaviour
             onChest = false;
         }
     }
-
+    // Method for opening the chest
     private void openChest()
     {
+        // Verify if the key pressed is "E"
         if (Input.GetKeyDown(KeyCode.E) && onChest && numGolpesAbrir > 0)
         {
             Player.player.HeroAction(costGolpesAbrir);
             numGolpesAbrir--;
+            // Check if the chest is opening and adjust the animation
             if (numGolpesAbrir == 1)
             {
                 anim.SetTrigger("ChestOpening");
@@ -53,10 +57,6 @@ public class Finish : MonoBehaviour
             else if (numGolpesAbrir == 0)
             {
                 LifeManager.lifeManager.GameOverForzado();
-                //anim.SetTrigger("ChestOpen");
-                //Destroy(gameObject);
-                //SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
-                //StartCoroutine(LoadScene());
             }
         }
     }

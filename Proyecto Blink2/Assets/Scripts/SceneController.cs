@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Jair Duván Ayala Duarte
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,7 @@ public class SceneController : MonoBehaviour
         sceneController = this;
     }
 
+    // Read scene
     IEnumerator LoadScene()
     {
         anim.SetTrigger("end");
@@ -23,7 +25,7 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(sceneName);
 
     }
-
+    // change scene
     public void SceneChange()
     {
         StartCoroutine(LoadScene());

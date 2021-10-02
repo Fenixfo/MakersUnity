@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Jair Duván Ayala Duarte
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -14,13 +15,7 @@ public class QualityController : MonoBehaviour
         dropdown.value = quality;
         QualitySetting();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // modification of the image quality
     public void QualitySetting()
     {
         QualitySettings.SetQualityLevel(dropdown.value);

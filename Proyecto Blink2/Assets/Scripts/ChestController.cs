@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Jair Duván Ayala Duarte
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +10,6 @@ public class ChestController : MonoBehaviour
 {
     public int numGolpesAbrir = 2;
     public int costGolpesAbrir = 1;
-    //public Slider slider;
-    //public Text text;
 
     Animator anim;
     public Animator animScene;
@@ -23,31 +22,19 @@ public class ChestController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //GolpeAbrir();
         openChest();
     }
 
-    /*public void GolpeAbrir() 
-    {
-        if (numGolpesAbrir == 1)
-        {
-            anim.SetTrigger("ChestOpening");
-        }
-        else if(numGolpesAbrir == 0)
-        {
-            anim.SetTrigger("ChestOpen");
-        }
-    }*/
-
     bool onChest = false;
+    // Method to validate when the character comes in contact with the chest
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
         if(collision.gameObject.name.Equals("Hero"))
         {
             onChest = true;
         }
     }
+    // check if the player has left the range of the chest
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.name.Equals("Hero"))
@@ -55,13 +42,15 @@ public class ChestController : MonoBehaviour
             onChest = false;
         }
     }
-
+    // Open Chest
     private void openChest()
     {
+        // check if the E key is pressed
         if (Input.GetKeyDown(KeyCode.E) && onChest && numGolpesAbrir>0) 
         {
             Player.player.HeroAction(costGolpesAbrir);
             numGolpesAbrir--;
+            // Count the number of times E was pressed to change animation or level change
             if (numGolpesAbrir == 1)
             {
                 anim.SetTrigger("ChestOpening");
@@ -73,7 +62,7 @@ public class ChestController : MonoBehaviour
             }
         }
     }
-
+    // Load Scene
     IEnumerator LoadScene()
     {
         animScene.SetTrigger("end");

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Jair Duván Ayala Duarte
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,16 +17,12 @@ public class TopController : MonoBehaviour
         aSource = transform.parent.GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Control to know when an enemy is killed by the player
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.name == "Hero")
         {
+            // Change death animation 
             transform.parent.GetComponent<Animator>().SetBool("death", true);
             Destroy(transform.parent.gameObject, lifeTime);
             aSource.PlayOneShot(dying);

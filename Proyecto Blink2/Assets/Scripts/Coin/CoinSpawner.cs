@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Jair Duván Ayala Duarte
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,13 +9,9 @@ public class CoinSpawner : MonoBehaviour
     float timer;
     public GameObject coinPrefab;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
+    // Coin spawn update to instantiate them
     void Update()
     {
         timer += Time.deltaTime;

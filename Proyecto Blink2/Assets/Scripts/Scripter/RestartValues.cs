@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Jair Duván Ayala Duarte
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ public class RestartValues : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Resetting life values 
         if (reset)
         {
             ResetValues(life, points);
@@ -27,13 +29,13 @@ public class RestartValues : MonoBehaviour
         }
         
     }
-
+    // Reset life values with input values
     public void ResetValues(float life, float points)
     {
         LifeManager.lifeManager.SetLife(life);
         ScoreManager.scoreManager.SetScore(points);
     }
-
+    // Reset life values to initial values
     public void ResetValues()
     {
         LifeManager.lifeManager.SetLife(life);

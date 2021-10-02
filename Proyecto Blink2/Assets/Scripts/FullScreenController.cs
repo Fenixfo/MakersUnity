@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Jair Duván Ayala Duarte
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ public class FullScreenController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // verification of screen resolutions
         if (Screen.fullScreen)
         {
             toggle.isOn = true;
@@ -21,38 +23,33 @@ public class FullScreenController : MonoBehaviour
         {
             toggle.isOn = false;
         }
+        // verification of screen resolutions
         checkResolution();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // activate full screen
     public void FullScreenActivate(bool fullScreen)
     {
         Screen.fullScreen = fullScreen;
     }
-
+    // verification of screen resolutions
     public void checkResolution()
     {
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
         int resolutionActual = 0;
-
-        for(int i = 0; i < resolutions.Length; i++)
+        // read all screen resolutions
+        for (int i = 0; i < resolutions.Length; i++)
         {
             string option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(option);
-
-            if(Screen.fullScreen && resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            // choose a new resolution
+            if (Screen.fullScreen && resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
             {
                 resolutionActual = i;
             }
         }
-
+        // create a box with the resolutions
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = resolutionActual;
         resolutionDropdown.RefreshShownValue();
@@ -60,7 +57,7 @@ public class FullScreenController : MonoBehaviour
         resolutionDropdown.value = PlayerPrefs.GetInt("numberResolution", 0);
 
     }
-
+    // choose a new resolution
     public void changeResolution(int indexResolution)
     {
         PlayerPrefs.SetInt("numberResolution", resolutionDropdown.value);

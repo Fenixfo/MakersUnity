@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Jair Duván Ayala Duarte
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,20 +16,18 @@ public class EnemyPig : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // pig speed adjustment
         Vector2 v = new Vector2(vel, 0);
         rgb.velocity = v;
     }
-
+    // turning the enemy around
     void Flip()
     {
+        // change of direction of the pig
         vel *= -1;
         transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
-        /*var angles = transform.rotation.eulerAngles;
-        angles.y += 180;
-        transform.rotation = Quaternion.Euler(angles);
-        */
-        //transform.parent.SetPositionAndRotation(transform.parent.position,new Quaternion(transform.parent.rotation.x, transform.parent.rotation.y, transform.parent.rotation.z))
     }
+    // collision check with invisible barriers
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.name.Equals("EnemyCollider"))

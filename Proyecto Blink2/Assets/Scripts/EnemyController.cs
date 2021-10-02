@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Jair Duván Ayala Duarte
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,21 +15,22 @@ public class EnemyController : MonoBehaviour
         rgb = gameObject.GetComponent<Rigidbody2D>();
 
     }
-
+    // enemy speed adjustment
     void FixedUpdate()
     {
         Vector2 v = new Vector2(0, vel);
         rgb.velocity = v;
     }
-
+    // collision check
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.name.Equals("EnemyColliderTop") || collider.gameObject.name.Equals("EnemyColliderBottom"))
+        // verify whether the enemy is in the upper or lower zone
+        if (collider.gameObject.name.Equals("EnemyColliderTop") || collider.gameObject.name.Equals("EnemyColliderBottom"))
         {
             Flip();
         }
     }
-
+    // up or down
     void Flip() 
     {
         vel *= -1;
